@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <!---Author: Justin Fowler
     Date: 2023-11-22
@@ -11,6 +15,8 @@
     </head>
     <body>
       <h2><center>Login</center></h2>
+
+
       <form action="login.php" method="post">
         <label for="user_email">Email</label>
         <input type="email" id="user_email" name="user_email"><br>
@@ -19,8 +25,8 @@
         <label for="SUBMIT">Submit</label>
         <input type="submit" id="SUBMIT">
         <?php
-            $user_email = $_POST['user_email'];
-            $user_password = $_POST['user_password'];
+            $_SESSION[user_email] = $_POST['user_email'];
+            $_SESSION[user_password] = $_POST['user_password'];
 
             if(empty(trim($POST["user_email"]))){
                 echo "\nPlease enter your email";
@@ -42,7 +48,7 @@
                 die("Connection failed: " . mysqli_connect_error());
             }
 
-            $sql = "SELECT user_id email password FROM users where email = $email;";
+            $sql = "SELECT user_id email password FROM users where email = $_SESSION[user_email];";
             if (mysqli_num_rows($result) <= 0){
                 echo "\nError: Username not found";
             }
