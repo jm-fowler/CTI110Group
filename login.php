@@ -28,8 +28,8 @@
             $email = "";
             $password = "";
 
-            $_SESSION[user_email] = $_POST['user_email'];
-            $_SESSION[user_password] = $_POST['user_password'];
+            $user_email = $_POST['user_email'];
+            $user_password = $_POST['user_password'];
 
             if(empty(trim($POST["user_email"]))){
                 echo "\nPlease enter your email";
@@ -48,17 +48,22 @@
 
             $conn = mysqli_connect($servername, $username, $password, $dbname); 
             if ($conn->connect_error) {
-                die("Connection failed: " . mysqli_connect_error());
+                die("\nConnection failed: " . mysqli_connect_error());
             }
 
-            $sql = "SELECT user_id email password FROM users where email = $_SESSION[user_email];";
+            $sql = "SELECT user_id email password FROM users where email = $user_email;";
             if (mysqli_num_rows($result) <= 0){
                 echo "\nError: Username not found";
             }
+
             $result = mysqli_query($conn, $sql);
 
             if(strcmp($password, $user_password)){
-                header("location user_creation.html");
+                session_start();
+                $_SESSION["loggedin"] = true;
+                $_SESSION["user_id"] = $user_id;
+                $_SESSION["password"] = $password;
+                header("location: user.php");
             } else{
                 echo "\nError: Incorrect password";
             }
