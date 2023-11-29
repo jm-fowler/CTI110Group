@@ -25,6 +25,9 @@
         <label for="SUBMIT">Submit</label>
         <input type="submit" id="SUBMIT">
         <?php
+            $email = "";
+            $password = "";
+
             $_SESSION[user_email] = $_POST['user_email'];
             $_SESSION[user_password] = $_POST['user_password'];
 
@@ -57,10 +60,10 @@
             if(strcmp($password, $user_password)){
                 header("location user_creation.html");
             } else{
-                <br>
                 echo "\nError: Incorrect password";
             }
         ?>
+        <a href="user_creation.php">Sign Up Here</a>
     </body>
     <footer>
         <p>This page was created by .... </p>
