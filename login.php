@@ -40,9 +40,9 @@
             $servername = "hermes.waketech.edu";
             $username = "jdiveris";
             $dbname = "jdiveris";
-            $password = "csc124";
+            $mysql_password = "csc124";
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname); 
+            $conn = mysqli_connect($servername, $username, $mysql_password, $dbname);
             if ($conn->connect_error) {
                 die("\nConnection failed: " . mysqli_connect_error());
             }
@@ -59,7 +59,7 @@
                 $_SESSION["loggedin"] = true;
                 $_SESSION["user_id"] = $user_id;
                 $_SESSION["password"] = $password;
-                header("location: user.php");
+                header("location: user_page.php");
             } else{
                 echo "\nError: Incorrect password";
             }
