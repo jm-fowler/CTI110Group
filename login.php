@@ -1,7 +1,3 @@
-<?php
-    session_start();
-?>
-
 <!DOCTYPE html>
 <!---Author: Justin Fowler
     Date: 2023-11-22
