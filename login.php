@@ -39,7 +39,7 @@
 
             $servername = "hermes.waketech.edu";
             $username = "jdiveris";
-            $dbname = "jdiveris";
+            $dbname = "test";
             $mysql_password = "csc124";
 
             $conn = mysqli_connect($servername, $username, $mysql_password, $dbname);
