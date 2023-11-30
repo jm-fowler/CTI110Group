@@ -13,7 +13,9 @@
             $user_email = $_POST['email'];
             $user_password = $_POST['password'];
             $user_sub = $_POST['subscription'];
-            $user_sub_term = $_POST['term'];
+            $today_date = date_create();
+            $user_sub_start = date_format($today_date,"Y-m-d");
+            $user_sub_end = $today_date;
 
             $servername = "hermes.waketech.edu";
             $username = "jdiveris";
@@ -25,16 +27,90 @@
                 die("\nConnection failed: " . mysqli_connect_error());
             }
 
-            $sql = "SELECT user_id email password FROM users where email = $user_email;";
-            
+            $sql = "SELECT email FROM users where email = '$user_email';";
+            $result = mysqli_query($conn, $sql);
+
             if (mysqli_num_rows($result) <= 0){
                 $sql = "INSERT INTO users (last_name, first_name, email, phone_num, password)
-                VALUES ($user_last_name, $user_first_name, $user_email, $user_phone_num, $user_password)";
-                header("location: login.html");    
+                VALUES ('$user_last_name', '$user_first_name', '$user_email', '$user_phone_num', '$user_password')";
+                mysqli_query($conn,$sql);
             } else{
                 echo "\nEmail/Username Already in use";
             }
+            
+            if ($user_sub == "standard"){
+                $user_sub_term = $_POST['standard_term'];
+                if ($user_sub_term == 1){
+                    $user_sub_id = 1;
+                    $interval = date_interval_create_from_date_string('1 Month');
+                    $user_sub_end = date_add($today_date, $interval);
+                    $user_sub_end = date_format($user_sub_end,"Y-m-d");
+                }
+                if ($user_sub_term == 6){
+                    $user_sub_id = 2;
+                    $interval = date_interval_create_from_date_string('6 Months');
+                    $user_sub_end = date_add($today_date, $interval);
+                    $user_sub_end = date_format($user_sub_end,"Y-m-d");
+                }
+                if ($user_sub_term == 12){
+                    $user_sub_id = 3;
+                    $interval = date_interval_create_from_date_string('12 Months');
+                    $user_sub_end = date_add($today_date, $interval);
+                    $user_sub_end = date_format($user_sub_end,"Y-m-d");
+                }
+            } elseif ($user_sub == "plus") {
+                $user_sub_term = $_POST['plus_term'];
+                if ($user_sub_term == 1){
+                    $user_sub_id = 4;
+                    $interval = date_interval_create_from_date_string('1 Month');
+                    $user_sub_end = date_add($today_date, $interval);
+                    $user_sub_end = date_format($user_sub_end,"Y-m-d");
+                }
+                if ($user_sub_term == 6){
+                    $user_sub_id = 5;
+                    $interval = date_interval_create_from_date_string('6 Months');
+                    $user_sub_end = date_add($today_date, $interval);
+                    $user_sub_end = date_format($user_sub_end,"Y-m-d");
+                }
+                if ($user_sub_term == 12){
+                    $user_sub_id = 6;
+                }
+            } elseif ($user_sub == "premium") {
+                $user_sub_term = $_POST['premium_term'];
+                if ($user_sub_term == 1){
+                    $user_sub_id = 7;
+                    $interval = date_interval_create_from_date_string('1 Month');
+                    $user_sub_end = date_add($today_date, $interval);
+                    $user_sub_end = date_format($user_sub_end,"Y-m-d");
+                }
+                if ($user_sub_term == 6){
+                    $user_sub_id = 8;
+                    $interval = date_interval_create_from_date_string('6 Months');
+                    $user_sub_end = date_add($today_date, $interval);
+                    $user_sub_end = date_format($user_sub_end,"Y-m-d");
+                }
+                if ($user_sub_term == 12){
+                    $user_sub_id = 9;
+                    $interval = date_interval_create_from_date_string('12 Months');
+                    $user_sub_end = date_add($today_date, $interval);
+                    $user_sub_end = date_format($user_sub_end,"Y-m-d");
+                }
+            }
 
+            if ($user_sub_term == 0){
+                echo "\nSelect a Subscription Term";
+            } 
+            
+            $sql = "SELECT user_id FROM users where email = '$user_email';";
+            $result = $conn->query($sql);
+            $row = mysqli_fetch_array($result);
+            $user_id = $row[0];
+
+            $sql = "INSERT INTO orders (user_id, subscription_id, start_date, end_date)
+            VALUES ('$user_id','$user_sub_id','$user_sub_start','$user_sub_end');";
+            mysqli_query($conn,$sql);
+
+            header("location: login.html");
 
         ?>
         <nav>
@@ -85,7 +161,7 @@
                             <li>With Ads</li>
                         </ul>
                         <label for="standard_term">Term :</label>
-                        <select name="term" id="standard_term">
+                        <select name="standard_term" id="standard_term">
                             <option value="0">-- None --</option>
                             <option value="1">1 Month - $9.99 a Month</option>
                             <option value="6">6 Months - $7.99 a Month</option>
@@ -103,7 +179,7 @@
                           <li>With Ads</li>  
                         </ul>
                         <label for="plus_term">Term :</label>
-                        <select name="term" id="plus_term">
+                        <select name="plus_term" id="plus_term">
                             <option value="0">-- None --</option>
                             <option value="1">1 Month - $12.99 a Month</option>
                             <option value="6">6 Months - $10.99 a Month</option>
@@ -122,7 +198,7 @@
                           <li>No Ads</li>  
                         </ul>
                         <label for="premium_term">Term :</label>
-                        <select name="term" id="premium_term">
+                        <select name="premium_term" id="premium_term">
                             <option value="0">-- None --</option>
                             <option value="1">1 Month - $15.99 a Month</option>
                             <option value="6">6 Months - $13.99 a Month</option>
