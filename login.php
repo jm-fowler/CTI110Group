@@ -27,7 +27,7 @@
             $user_email = $_POST['user_email'];
             $user_password = $_POST['user_password'];
 
-            if(empty(trim($POST["user_email"]))){
+            /* if(empty(trim($POST["user_email"]))){
                 echo "\nPlease enter your email";
             } else{trim($user_email);
             }
@@ -35,7 +35,7 @@
             if(empty(trim($user_password))){
                 echo "\nPlease enter your password";
             } else{trim($user_password);
-            }
+            } */
 
             $servername = "hermes.waketech.edu";
             $username = "jdiveris";
