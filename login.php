@@ -45,9 +45,10 @@
             $conn = mysqli_connect($servername, $username, $mysql_password, $dbname);
             if ($conn->connect_error) {
                 die("\nConnection failed: " . mysqli_connect_error());
+                echo "\nConnection failed: ";
             }
 
-            $sql = "SELECT user_id email password FROM users where email = $user_email;";
+            $sql = "SELECT user_id, email, password FROM users WHERE email = $user_email";
             if (mysqli_num_rows($result) <= 0){
                 echo "\nError: Username not found";
             }
@@ -59,7 +60,7 @@
                 $_SESSION["loggedin"] = true;
                 $_SESSION["user_id"] = $user_id;
                 $_SESSION["password"] = $password;
-                header("location: user_page.php");
+                header("location: user_page.html");
             } else{
                 echo "\nError: Incorrect password";
             }
