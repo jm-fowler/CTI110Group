@@ -55,7 +55,7 @@
 
             $result = mysqli_query($conn, $sql);
 
-            if(strcmp($password, $user_password)){
+            if(strcmp($password, $user_password) == 0){
                 session_start();
                 $_SESSION["loggedin"] = true;
                 $_SESSION["user_id"] = $user_id;
