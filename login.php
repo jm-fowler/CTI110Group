@@ -22,19 +22,21 @@
         <input type="submit" id="SUBMIT">; --->
         <?php
 
+            session_start();
+
             ini_set('display_errors', 1);
 
-            $email = "";
-            $password = "";
+            $_SESSSION['user_email'] = "";
+            $_SESSSION['user_password'] = "";
 
-            $user_email = $_POST['user_email'];
-            $user_password = $_POST['user_password'];
+            $_SESSSION['user_email'] = $_POST['user_email'];
+            $_SESSSION['user_password'] = $_POST['user_password'];
 
 
             # some debugging messages
-            echo $user_email;
+            echo $_SESSSION['user_email'];
             echo "\n";
-            echo $user_password;
+            echo $_SESSSION['user_password'];
             echo "\n";
             # end of debugging messages
 
@@ -56,7 +58,6 @@
             $conn = mysqli_connect($servername, $username, $mysql_password, $dbname);
             if ($conn->connect_error) {
                 die("\nConnection failed: " . mysqli_connect_error());
-                echo "\nConnection failed: ";
             }
 
             $sql = "SELECT user_id, email, password FROM users WHERE email = $user_email";
@@ -72,7 +73,7 @@
             # end debugging messages
 
             if(strcmp($password, $user_password) == 0){
-                session_start();
+
                 $_SESSION["loggedin"] = true;
                 $_SESSION["user_id"] = $user_id;
                 $_SESSION["password"] = $password;
@@ -90,8 +91,6 @@
             echo $_SESSION["password"];
             # end debugging messages
 
-            echo "\n";
-            echo "<a href="user_creation.php">Sign Up Here</a>";
         ?>
 
     </body>
