@@ -42,13 +42,17 @@
         die("\nConnection failed: " . mysqli_connect_error());
     } else {echo "Connected successfully"; }
 
-    $sql = 'SELECT email password FROM users WHERE email=?' [$user_email];
+    # $sql = 'SELECT email password FROM users WHERE email=?' [$user_email];
+
+    #debugging
+    $sql = 'SELECT email password FROM users WHERE email="johndoe@email.com"';
 
 
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
-
+        while ($row = $result->fetch_assoc()) {
+            echo "email: " . $row["email"] ." - Name: ". $row["password"] . <br>; 
     } else {echo "Username not found"; }
 
     mysqli_stmt_bind_param(':email', $email);
