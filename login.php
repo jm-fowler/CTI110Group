@@ -46,10 +46,7 @@
             FROM users
             WHERE email=:email';
 
-    $statement = 
-    $statement->bindValue(':email', $email, PDO::PARAM_STR);
-    $statement->execute();
-
+    mysqli_stmt_bind_param(':email', $email);
     return $statement->fetch(PDO::FETCH_ASSOC);
 
     $sql = "SELECT email FROM users where email = '$user_email';";
