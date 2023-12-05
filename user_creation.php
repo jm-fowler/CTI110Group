@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<!---Author: John Diveris
+    Date: 2023-11-29
+    File: user_creation.php
+    Purpose: Add User to Database & Select Subscription
+    Updated: 2023-12-05
+        - Better error message functionality added
+--->
  <html>
     <head>
         <title>User Creation</title>
@@ -16,6 +23,7 @@
             $today_date = date_create();
             $user_sub_start = date_format($today_date,"Y-m-d");
             $user_sub_end = $today_date;
+            $error = 0;
 
             $servername = "hermes.waketech.edu";
             $username = "jdiveris";
@@ -35,7 +43,7 @@
                 VALUES ('$user_last_name', '$user_first_name', '$user_email', '$user_phone_num', '$user_password')";
                 mysqli_query($conn,$sql);
             } else{
-                echo "\nEmail/Username Already in use";
+                $error = 1;
             }
             
             if ($user_sub == "standard"){
@@ -98,7 +106,7 @@
             }
 
             if ($user_sub_term == 0){
-                echo "\nSelect a Subscription Term";
+                $error = 2;
             } 
             
             $sql = "SELECT user_id FROM users where email = '$user_email';";
@@ -110,7 +118,9 @@
             VALUES ('$user_id','$user_sub_id','$user_sub_start','$user_sub_end');";
             mysqli_query($conn,$sql);
 
-            header("location: login.html");
+            if ($error == 0){
+                header("location: login.html");
+            }
 
         ?>
         <nav>
@@ -121,6 +131,20 @@
             <img src="user.jpg" width="300">
         </figure>
         <br>
+
+        <?php
+
+            if ($error != 0){
+                echo "<h1><span class=\"error\" style=\"color:red\">Oops...</span></h1><br><ul style=\"list-style-type:none;\">";
+                if ($error == 1){
+                    echo "<li><span class=\"error\" style=\"color:red\"> This Email/Username is Already in Use</span><br></li></ul>";
+                }
+                if ($error == 2){
+                    echo "<li><span class=\"error\" style=\"color:red\"> Please Select a Subscription Term</span><br></li></ul>";
+                }
+            }
+
+        ?>
         <br>
         <form action="user_creation.php" method="post">
             <div class="user_info">
