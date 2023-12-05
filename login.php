@@ -27,6 +27,14 @@
             $user_email = $_POST['user_email'];
             $user_password = $_POST['user_password'];
 
+
+            # some debugging messages
+            echo $user_email
+            echo "\n"
+            echo $user_password
+            echo "\n"
+            # end of debugging messages
+
             /* if(empty(trim($POST["user_email"]))){
                 echo "\nPlease enter your email";
             } else{trim($user_email);
@@ -55,6 +63,11 @@
 
             $result = mysqli_query($conn, $sql);
 
+            # some debugging messages
+            echo "\n"
+            echo $result
+            # end debugging messages
+
             if(strcmp($password, $user_password) == 0){
                 session_start();
                 $_SESSION["loggedin"] = true;
@@ -64,8 +77,21 @@
             } else{
                 echo "\nError: Incorrect password";
             }
+
+            # debugging messages
+            echo "\n"
+            echo $_SESSION["loggedin"]
+            echo "\n"
+            echo $_SESSION["user_id"]
+            echo "\n"
+            echo $_SESSION["password"]
+            # end debugging messages
+
+            echo "\n"
+            echo "<a href="user_creation.php">Sign Up Here</a>"
+
         ?>
-        <a href="user_creation.php">Sign Up Here</a>
+
     </body>
     <footer>
         <p>This page was created by .... </p>
