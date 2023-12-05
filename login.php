@@ -52,7 +52,7 @@
             if ($user_password == $row["password"]) {
                 echo "Login successful"; 
                 $logged_in = true;
-                header("./user_page.html");
+                header("Location: https://hermes.waketech.edu/~jmfowler/test/user_page.html", true, 301);
                 exit();
             } else {
                 echo "Incorrect password";
