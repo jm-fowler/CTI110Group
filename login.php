@@ -52,7 +52,8 @@
             if ($user_password == $row["password"]) {
                 echo "Login successful"; 
                 $logged_in = true;
-                header("./user_page.html");
+                header(""./user_page.html");
+                exit();
             } else {
                 echo "Incorrect password";
             }
