@@ -51,6 +51,8 @@
         while ($row = $result->fetch_assoc()) {
             if ($user_password == $row["password"]) {
                 echo "Login successful"; 
+                $logged_in = true;
+                header("./user_page.html");
             } else {
                 echo "Incorrect password";
             }
