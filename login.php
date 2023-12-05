@@ -21,8 +21,8 @@
         <label for="SUBMIT">Submit</label>
         <input type="submit" id="SUBMIT">
         <?php
-            $email = "";
-            $password = "";
+            /*$email = "";
+            $password = "";*/
 
             $user_email = $_POST['user_email'];
             $user_password = $_POST['user_password'];
