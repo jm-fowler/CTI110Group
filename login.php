@@ -10,29 +10,29 @@
         <link rel="stylesheet" type="text/css" href="style.css" />
     </head>
     <body>
-      <h2><center>Login</center></h2>
+      <!--- <h2><center>Login</center></h2>
 
 
       <form action="login.php" method="post">
-        <label for="user_email">Email</label>
-        <input type="email" id="user_email" name="user_email"><br>
-        <label for="user_password">Password</label>
-        <input type="password" id="user_password" name="user_password"><br>
-        <label for="SUBMIT">Submit</label>
-        <input type="submit" id="SUBMIT">
+        <label for="user_email">Email</label>;
+        <input type="email" id="user_email" name="user_email"><br>;
+        <label for="user_password">Password</label>;
+        <input type="password" id="user_password" name="user_password"><br>;
+        <label for="SUBMIT">Submit</label>;
+        <input type="submit" id="SUBMIT">; --->
         <?php
-            /*$email = "";
-            $password = "";*/
+            $email = "";
+            $password = "";
 
             $user_email = $_POST['user_email'];
             $user_password = $_POST['user_password'];
 
 
             # some debugging messages
-            echo $user_email
-            echo "\n"
-            echo $user_password
-            echo "\n"
+            echo $user_email;
+            echo "\n";
+            echo $user_password;
+            echo "\n";
             # end of debugging messages
 
             /* if(empty(trim($POST["user_email"]))){
@@ -64,8 +64,8 @@
             $result = mysqli_query($conn, $sql);
 
             # some debugging messages
-            echo "\n"
-            echo $result
+            echo "\n";
+            echo $result;
             # end debugging messages
 
             if(strcmp($password, $user_password) == 0){
@@ -79,17 +79,16 @@
             }
 
             # debugging messages
-            echo "\n"
-            echo $_SESSION["loggedin"]
-            echo "\n"
-            echo $_SESSION["user_id"]
-            echo "\n"
-            echo $_SESSION["password"]
+            echo "\n";
+            echo $_SESSION["loggedin"];
+            echo "\n";
+            echo $_SESSION["user_id"];
+            echo "\n";
+            echo $_SESSION["password"];
             # end debugging messages
 
-            echo "\n"
-            echo "<a href="user_creation.php">Sign Up Here</a>"
-
+            echo "\n";
+            echo "<a href="user_creation.php">Sign Up Here</a>";
         ?>
 
     </body>
