@@ -1,5 +1,16 @@
 <?php
-session_start();
+    function find_user_by_user_email(string $user_email)
+    {
+        $sql = 'SELECT email, password
+                FROM users
+                WHERE email=:email';
+
+        $statement = db()->prepare($sql);
+        $statement->bindValue(':email', $user_email, PDO::PARAM_STR);
+        $statement->execute();
+
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -18,25 +29,14 @@ session_start();
     <?php
         ini_set('display_errors', 1);
 
-        $user_email = "";
-        $user_password = "";
+        # $user_email = "";
+        # $user_password = "";
         $errors = [];
 
         if ($errors) {
             redirect_with('login.php', ['errors' => $errors]
 
-        function find_user_by_user_email(string $user_email)
-        {
-            $sql = 'SELECT email, password
-                    FROM users
-                    WHERE email=:email';
 
-            $statement = db()->prepare($sql);
-            $statement->bindValue(':email', $user_email, PDO::PARAM_STR);
-            $statement->execute();
-
-            return $statement->fetch(PDO::FETCH_ASSOC);
-        }
 
 
 
@@ -46,15 +46,15 @@ session_start();
         $_SESSSION[''] = $_POST[''];*/
 
         # debugging
-        $_SESSSION["user_email"] = "johndoe@email.com";
-        $_SESSSION["user_password"] = "password";
+        $email = '',0);
+        $password = 'password';
         # end debugging
 
         # some debugging messages
-        echo "\n";
+        /*echo "\n";
         echo $_SESSSION['user_email'];
         echo "\n";
-        echo $_SESSSION['user_password'];
+        echo $_SESSSION['user_password'];*/
         # end of debugging messages
 
         /*if(empty(trim($POST["user_email"]))){
@@ -67,10 +67,10 @@ session_start();
         } else{trim($user_password);
         }*/
         mysqli_stmt_bind_result ($GLOBALS[''], $_SESSION[''], $_SESSION[''],
-        $servername = "hermes.waketech.edu";
-        $mysql_username = "jdiveris";
-        $dbname = "test";
-        $mysql_password = "csc124";
+        $servername = 'hermes.waketech.edu';
+        $mysql_username = 'jdiveris';
+        $dbname = 'test';
+        $mysql_password = 'csc124';
 
         $conn = mysqli_connect($servername, $mysql_username, $mysql_password, $dbname);
         if ($conn->connect_error) {
