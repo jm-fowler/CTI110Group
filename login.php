@@ -42,19 +42,27 @@
         die("\nConnection failed: " . mysqli_connect_error());
     } else {echo "Connected successfully"; }
 
-    # $sql = 'SELECT email password FROM users WHERE email=?' [$user_email];
+    $query = "SELECT email FROM users WHERE email=?"; 
+    $email = $mysqli->execute_query($query, [$user_email]);
 
-    #debugging
-    $sql = 'SELECT email password FROM users WHERE email="johndoe@email.com"';
+    echo "<br>" . $query; 
+
+    $query = "SELECT password FROM users WHERE email=?"; 
+    $password = $mysqli->execute_query($query, [$user_email]);
+
+    echo "<br>" . $query . "<br>" . $email . "<br>" . $password;
+
+    # $sql = 'SELECT email password FROM users WHERE email=?', [$user_email];
 
 
-    $result = $conn->query($sql);
 
-    if ($result->num_rows > 0) {
+    # $result = $conn->query($sql);
+
+    /*if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             echo "email: " . $row["email"] . "\n" . " - Password: ". $row["password"] . "\n"; 
         }
-    } else {echo "Username not found"; }
+    } else {echo "Username not found"; }*/
 
     # mysqli_stmt_bind_param(':email', $email);
     # return $statement->fetch(PDO::FETCH_ASSOC);
