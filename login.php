@@ -24,11 +24,37 @@
     </form>
 <?php
 
-    include("./src/functions.php");
-
-
     $inputs = [];
     $errors = [];
+    $user_email = [];
+    $user_password = [];
+
+    $user_email = $_POST['user_email'];
+    $user_password = $_POST['user_password'];
+
+    $servername = "hermes.waketech.edu";
+    $username = "jdiveris";
+    $dbname = "test";
+    $mysql_password = "csc124";
+
+    $conn = mysqli_connect($servername, $username, $mysql_password, $dbname);
+    if ($conn->connect_error){
+        die("\nConnection failed: " . mysqli_connect_error());
+    }
+
+    $sql = 'SELECT email password
+            FROM users
+            WHERE email=:email';
+
+    $statement = 
+    $statement->bindValue(':email', $email, PDO::PARAM_STR);
+    $statement->execute();
+
+    return $statement->fetch(PDO::FETCH_ASSOC);
+
+    $sql = "SELECT email FROM users where email = '$user_email';";
+    $result = mysqli_query($conn, $sql);
+
 
     if ($errors) {
 
