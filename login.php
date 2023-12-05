@@ -24,6 +24,7 @@
     </form>
 <?php
 
+    include("./src/functions.php");
 
 
     $inputs = [];
