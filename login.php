@@ -46,13 +46,13 @@ session_start();
             echo "\nPlease enter your password";
         } else{trim($user_password);
         }*/
-
+        mysqli_stmt_bind_result ($GLOBALS[''], $_SESSION[''], $_SESSION[''],
         $servername = "hermes.waketech.edu";
-        $username = "jdiveris";
+        $mysql_username = "jdiveris";
         $dbname = "test";
         $mysql_password = "csc124";
 
-        $conn = mysqli_connect($servername, $username, $mysql_password, $dbname);
+        $conn = mysqli_connect($servername, $mysql_username, $mysql_password, $dbname);
         if ($conn->connect_error) {
             die("\nConnection failed: " . mysqli_connect_error());
         }
@@ -61,17 +61,26 @@ session_start();
         if (mysqli_num_rows($result) <= 0){
             echo "\nError: Username not found";
         }
-        $result = mysqli_query($conn, $sql);
 
+        $result = mysqli_query($conn, $sql);
+        mysqli_stmt_bind_result($result, $id, $email, $password);
+        
         # some debugging messages
         echo "\n";
         echo $result;
+        echo "\n";
+        echo $id;
+        echo "\n";
+        echo $email;
+        echo "\n";
+        echo $password;
         # end debugging messages
 
-        if(strcmp($password, $user_password) == 0){
-            $_SESSION["loggedin"] = true;
-            $_SESSION["user_id"] = $user_id;
-            $_SESSION["password"] = $password;
+        mysqli_stmt_store_result($result);
+
+        if(strcmp($password, $_SESSION['$user_password']) == 0){
+            $_SESSION['loggedin'] = true;
+            $_SESSION['user_id'] = $id;
             header("location: user_page.html");
         } else{
             echo "\nError: Incorrect password";
