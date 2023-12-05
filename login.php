@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-    <meta charset="UTF-8"
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
     <title>Login</title>
 </head>
@@ -24,13 +24,10 @@
     </form>
 <?php
 
-    $inputs = [];
     $errors = [];
-    $user_email = [];
-    $user_password = [];
 
-    $user_email = $_POST['user_email'];
-    $user_password = $_POST['user_password'];
+    $user_email = $_POST['email'];
+    $user_password = $_POST['password'];
 
     $servername = "hermes.waketech.edu";
     $username = "jdiveris";
@@ -40,41 +37,34 @@
     $conn = mysqli_connect($servername, $username, $mysql_password, $dbname);
     if ($conn->connect_error){
         die("\nConnection failed: " . mysqli_connect_error());
-    } else {echo "Connected successfully"; }
-
-    $query = "SELECT email FROM users WHERE email=?"; 
-    $email = $mysqli->execute_query($query, [$user_email]);
-
-    echo "<br>" . $query; 
-
-    $query = "SELECT password FROM users WHERE email=?"; 
-    $password = $mysqli->execute_query($query, [$user_email]);
-
-    echo "<br>" . $query . "<br>" . $email . "<br>" . $password;
-
-    # $sql = 'SELECT email password FROM users WHERE email=?', [$user_email];
-
-
-
-    # $result = $conn->query($sql);
-
-    /*if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            echo "email: " . $row["email"] . "\n" . " - Password: ". $row["password"] . "\n"; 
-        }
-    } else {echo "Username not found"; }*/
-
-    # mysqli_stmt_bind_param(':email', $email);
-    # return $statement->fetch(PDO::FETCH_ASSOC);
-
-    # $sql = "SELECT email FROM users where email = '$user_email';";
-    # $result = mysqli_query($conn, $sql);
-
-
-    if ($errors) {
-
-        redirect_with('login.php', ['errors'=> $errors, 'inputs' => $inputs]);
+    } else {
+        echo "Connected successfully"; 
     }
+
+    $query = "SELECT email, password FROM users WHERE email=?"; 
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("s", $user_email);
+    $stmt->execute(); 
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            if ($user_password == $row["password"]) {
+                echo "Login successful"; 
+            } else {
+                echo "Incorrect password";
+            }
+        }
+    } else {
+        echo "Email not found";
+        # $errors = "emailnotfound";
+    }
+    $stmt->close();
+    $conn->close();
+
+    /* if ($errors) {
+        redirect_with('login.php', ['errors'=> $errors, 'inputs' => $inputs]);
+    }*/
 ?>
 
 </main>
