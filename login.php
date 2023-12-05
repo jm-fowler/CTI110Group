@@ -40,11 +40,17 @@
     $conn = mysqli_connect($servername, $username, $mysql_password, $dbname);
     if ($conn->connect_error){
         die("\nConnection failed: " . mysqli_connect_error());
-    }
+    } else {echo "Connected successfully"; }
 
     $sql = 'SELECT email password
             FROM users
             WHERE email=:email';
+
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+
+    } else {echo "Username not found"; }
 
     mysqli_stmt_bind_param(':email', $email);
     return $statement->fetch(PDO::FETCH_ASSOC);
