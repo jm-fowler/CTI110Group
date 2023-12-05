@@ -18,8 +18,28 @@ session_start();
     <?php
         ini_set('display_errors', 1);
 
-        $_SESSSION['user_email'] = "";
-        $_SESSSION['user_password'] = "";
+        $user_email = "";
+        $user_password = "";
+        $errors = [];
+
+        if ($errors) {
+            redirect_with('login.php', ['errors' => $errors]
+
+        function find_user_by_user_email(string $user_email)
+        {
+            $sql = 'SELECT email, password
+                    FROM users
+                    WHERE email=:email';
+
+            $statement = db()->prepare($sql);
+            $statement->bindValue(':email', $user_email, PDO::PARAM_STR);
+            $statement->execute();
+
+            return $statement->fetch(PDO::FETCH_ASSOC);
+        }
+
+
+
 
         /*$_SESSSION['user_email'] = $_POST['user_email'];
         $_SESSSION['user_password'] = $_POST['user_password'];
@@ -104,6 +124,8 @@ session_start();
         <input type="password" id="user_password" name="user_password"><br>
         <label for="SUBMIT">Submit</label>
         <input type="submit" id="SUBMIT">
+    <p>Don't have an account
+    <a href="user_creation.html"> Create a new account</a></p>
     </body>
     <footer>
         <p>This page was created by .... </p>
