@@ -21,6 +21,9 @@
         <label for="SUBMIT">Submit</label>;
         <input type="submit" id="SUBMIT">; --->
         <?php
+
+            ini_set('display_errors', 1);
+
             $email = "";
             $password = "";
 
