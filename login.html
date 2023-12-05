@@ -1,29 +1,27 @@
 <!DOCTYPE html>
-<!---Author: Justin Fowler
-    Date: 2023-11-22
-    File: login.php
-    Purpose: login page
---->
-<html lang="en-US">
-  <head>
-    <meta charset="utf-8">
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8"
+    <link rel="stylesheet" href="style.css">
     <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-  </head>
-  <body>
-    <header></header>
-    <main>
-      <h2><center>Login</center></h2>
-      <form method="post" action="login.php">
-        <label for="user_email">Email</label>
-        <input type="email" id="user_email" name="user_email"><br>
-        <label for="user_password">Password</label>
-        <input type="password" id="user_password" name="user_password"><br>
-        <label for="SUBMIT">Submit</label>
-        <input type="submit" id="SUBMIT">
-    </main>
-    <footer>
-      <a href="user_creation.php">Sign Up Here</a>
-    </footer>
-  </body>
+</head>
+<body>
+<main>
+    <form action="login.php" method="post">
+        <h1><center>Login</center></h1>
+        <div>
+            <label for="email">Email: </label>
+            <input type="email" name="email" id="email">
+        </div>
+        <div>
+            <label for="password">Password: </label>
+            <input type="password" name="password" id="password">
+        </div>
+        <section>
+            <button type="submit">Login</button>
+            <a href="user_creation.html">Create New User</a>
+        </section>
+    </form>
+</main>
+</body>
 </html>
