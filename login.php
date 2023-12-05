@@ -1,9 +1,13 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
-<!---Author: Justin Fowler
+/* Author: Justin Fowler
     Date: 2023-11-22
     File: login.php
     Purpose: login page
---->
+*/
 <html>
     <head>
         <title>Login Page</title>
@@ -12,26 +16,28 @@
     <body>
 
     <?php
-
-        session_start();
-
         ini_set('display_errors', 1);
 
         $_SESSSION['user_email'] = "";
         $_SESSSION['user_password'] = "";
 
-        $_SESSSION['user_email'] = $_POST['user_email'];
+        /*$_SESSSION['user_email'] = $_POST['user_email'];
         $_SESSSION['user_password'] = $_POST['user_password'];
+        $_SESSSION[''] = $_POST[''];*/
 
+        # debugging
+        $_SESSSION["user_email"] = "johndoe@email.com";
+        $_SESSSION["user_password"] = "password";
+        # end debugging
 
         # some debugging messages
+        echo "\n";
         echo $_SESSSION['user_email'];
         echo "\n";
         echo $_SESSSION['user_password'];
-        echo "\n";
         # end of debugging messages
 
-        if(empty(trim($POST["user_email"]))){
+        /*if(empty(trim($POST["user_email"]))){
             echo "\nPlease enter your email";
         } else{trim($user_email);
         }
@@ -39,7 +45,7 @@
         if(empty(trim($user_password))){
             echo "\nPlease enter your password";
         } else{trim($user_password);
-        }
+        }*/
 
         $servername = "hermes.waketech.edu";
         $username = "jdiveris";
