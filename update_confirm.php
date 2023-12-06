@@ -13,6 +13,7 @@
 
 <?php
     
+    session_start();
     $user_id = $_SESSION["user_id"];
     $servername = "hermes.waketech.edu";
     $username = "jdiveris";
