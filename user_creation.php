@@ -35,7 +35,7 @@
                 die("\nConnection failed: " . mysqli_connect_error());
             }
 
-            $sql = "SELECT email FROM users where email = '$user_email';";
+            $sql = "SELECT email FROM users WHERE email = '$user_email';";
             $result = mysqli_query($conn, $sql);
 
             if (mysqli_num_rows($result) <= 0){
@@ -110,7 +110,7 @@
             } 
             
             $sql = "SELECT user_id FROM users where email = '$user_email';";
-            $result = $conn->query($sql);
+            $result = mysqli_query($conn, $sql);
             $row = mysqli_fetch_array($result);
             $user_id = $row[0];
 
