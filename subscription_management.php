@@ -7,6 +7,13 @@
 --->
 <html>
 <head>
+    <?php
+         session_start();
+         if(!isset($_SESSION['logged_in'])) {
+             header('LOCATION:login.php');
+             die();
+         }
+    ?>
     <title>Manage Subscription</title>
     <link rel="stylesheet" href="style.css"/>
 </head>
@@ -18,7 +25,6 @@
     <br>
 <?php
 
-    session_start();
     $user_id = $_SESSION["user_id"];
     $servername = "hermes.waketech.edu";
     $username = "jdiveris";
