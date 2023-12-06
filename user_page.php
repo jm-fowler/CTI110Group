@@ -21,7 +21,7 @@
         $dbname = "test";
         $mysql_password = "csc124";
         $error = 0;
-
+        
         $conn = mysqli_connect($servername, $username, $mysql_password, $dbname);
         if ($conn->connect_error){
             die("\nConnection failed: " . mysqli_connect_error());
@@ -34,7 +34,7 @@
         $result = mysqli_query($conn, $sql);
         
  
-            $row = mysqli_fetch_array($result);
+            $row = $result->fetch_array(MYSQLI_NUM);
             $order_id = $row[0];
             $subscription_id = $row[1];
             $end_date = $row[2];
@@ -64,9 +64,9 @@
 
             $sql = "SELECT last_name, first_name, email, phone_num FROM users WHERE user_id = '$user_id';";
             $result = mysqli_query($conn, $sql);
-            $row = mysqli_fetch_array($result);
+            $row = $result->fetch_array(MYSQLI_NUM);
 
-            $last_name = $row["last_name"];
+            $last_name = $row[0];
             $first_name = $row[1];
             $email = $row[2];
             $phone_num = $row[3];
@@ -81,7 +81,7 @@
                 echo "<p>$email</p>";
                 echo "<p>$phone_num</p>";
            
-
+                echo $user_id;
         
 
         ?>

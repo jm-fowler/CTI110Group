@@ -41,7 +41,7 @@
         echo "Connected successfully"; 
     }
 
-    $query = "SELECT email, password FROM users WHERE email=?"; 
+    $query = "SELECT user_id, email, password FROM users WHERE email=?"; 
     $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $user_email);
     $stmt->execute(); 

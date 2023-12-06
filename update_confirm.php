@@ -108,7 +108,7 @@
         $sql = "SELECT order_id, subscription_id, end_date FROM orders WHERE user_id = '$user_id' ORDER BY end_date DESC LIMIT 1;";
         $result = mysqli_query($conn, $sql);
         
-        $row = mysqli_fetch_array($result);
+        $row = $result->fetch_array(MYSQLI_NUM);
         $order_id = $row[0];
         $subscription_id = $row[1];
         $end_date = $row[2];
