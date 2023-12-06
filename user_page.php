@@ -1,32 +1,18 @@
-<<<<<<< HEAD
 <?php
-    if ($_SESSION["logged_in"] = false || $_SESSION["user_id"] = "") {
-
-
+    session_start();
+    if(!isset($_SESSION['logged_in'])) {
+        header('LOCATION:login.php');
+        die();
     }
+?>
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Login Page</title>
-        <link rel="stylesheet" type="text/css" href="style.css" />
-    </head>
-    <body>
-      <h2><center>Stand-in page for testing</center></h2>
-    </body>
-    <footer>
-        <p>This page was created by .... </p>
-    </footer>
-</html>
-
-=======
 <!DOCTYPE html>
 <html>
     <head>
         <title>User Page</title>
         <link rel="stylesheet" type="text/css" href="style.css" />
     </head>
-    
+
     <?php
 
         $user_id = $_SESSION["user_id"];
@@ -42,18 +28,18 @@
 
         $sql = "UPDATE orders SET active = 'FALSE' WHERE end_date < CURDATE() AND user_id = '$user_id;";
         mysqli_query($conn, $sql);
-    
+
         $sql = "SELECT order_id, subscription_id, end_date, active FROM orders WHERE user_id = '$user_id' ORDER BY end_date DESC LIMIT 1;";
         $result = mysqli_query($conn, $sql);
-        
+
         $row = mysqli_fetch_array($result);
         $order_id = $row[0];
         $subscription_id = $row[1];
         $end_date = $row[2];
         $active = $row[3];
-        
+
         $end_date = date('M d, Y', (strtotime($end_date)));
-    
+
         if ($subscription_id == 1){
             $subscription_desc = "Standard - 1 Month Subscription";
         }elseif ($subscription_id == 2){
@@ -82,7 +68,7 @@
         $first_name = $row[1];
         $email = $row[2];
         $phone_num = $row[3];
-    
+
     ?>
     <body>
         <?php
@@ -96,19 +82,19 @@
 
         <h2><center>Stand-in page for testing</center></h2>
         <br><br>
-        
+
         <?php
 
-            
+
             if ($active == "TRUE"){
                 echo "<p><b>$subscription_desc</b> | Status : ACTIVE Until $end_date </p>";
             }elseif ($active == "FALSE"){
                 echo "<p><b>$subscription_desc</b> | Status : INACTIVE Since $end_date </p>";
             }
-            
+
 
         ?>
-       
+
         <a href="subscription_management.php">Manage Subscriptions</a>
 
     </body>
@@ -116,4 +102,3 @@
         <p>This page was created by .... </p>
     </footer>
 </html>
->>>>>>> main
