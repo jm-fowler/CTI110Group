@@ -51,7 +51,8 @@
         while ($row = $result->fetch_assoc()) {
             if ($user_password == $row["password"]) {
                 echo "Login successful"; 
-                $logged_in = true;
+                $_SESSION["logged_in"] = true;
+                $_SESSION["user_id"] = $row["user_id"];
                 header("Location: ./user_page.html");
                 exit();
             } else {
@@ -66,7 +67,9 @@
     $conn->close();
 
     /* if ($errors) {
+        header("Location: ./login.php");
         redirect_with('login.php', ['errors'=> $errors, 'inputs' => $inputs]);
+        exit();
     }*/
 ?>
 
