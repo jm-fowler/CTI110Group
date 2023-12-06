@@ -35,7 +35,7 @@
                 die("\nConnection failed: " . mysqli_connect_error());
             }
 
-            $sql = "SELECT email FROM users where email = '$user_email';";
+            $sql = "SELECT email FROM users WHERE email = '$user_email';";
             $result = mysqli_query($conn, $sql);
 
             if (mysqli_num_rows($result) <= 0){
@@ -110,12 +110,12 @@
             } 
             
             $sql = "SELECT user_id FROM users where email = '$user_email';";
-            $result = $conn->query($sql);
+            $result = mysqli_query($conn, $sql);
             $row = mysqli_fetch_array($result);
             $user_id = $row[0];
 
-            $sql = "INSERT INTO orders (user_id, subscription_id, start_date, end_date)
-            VALUES ('$user_id','$user_sub_id','$user_sub_start','$user_sub_end');";
+            $sql = "INSERT INTO orders (user_id, subscription_id, start_date, end_date, active)
+            VALUES ('$user_id','$user_sub_id','$user_sub_start','$user_sub_end', 'TRUE');";
             mysqli_query($conn,$sql);
 
             if ($error == 0){
