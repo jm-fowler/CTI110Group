@@ -23,7 +23,7 @@
         </section>
     </form>
 <?php
-
+    session_start();
     $errors = [];
 
     $user_email = $_POST['email'];

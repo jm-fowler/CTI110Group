@@ -1,9 +1,8 @@
 <?php
     session_start();
-    if($_SESSION['logged_in'] != true) {
-        # header('LOCATION:login.php');
-        # die();
-        echo "<br><p>This page is not logged in</p>";
+    if(!isset($_SESSION['logged_in'])) {
+        header('LOCATION:login.php');
+        die();
     }
 ?>
 
@@ -21,63 +20,71 @@
         $username = "jdiveris";
         $dbname = "test";
         $mysql_password = "csc124";
+        $error = 0;
 
         $conn = mysqli_connect($servername, $username, $mysql_password, $dbname);
         if ($conn->connect_error){
             die("\nConnection failed: " . mysqli_connect_error());
         }
 
-        $sql = "UPDATE orders SET active = 'FALSE' WHERE end_date < CURDATE() AND user_id = '$user_id;";
+        $sql = "UPDATE orders SET active = 'FALSE' WHERE end_date < CURDATE() AND user_id = '$user_id';";
         mysqli_query($conn, $sql);
 
         $sql = "SELECT order_id, subscription_id, end_date, active FROM orders WHERE user_id = '$user_id' ORDER BY end_date DESC LIMIT 1;";
         $result = mysqli_query($conn, $sql);
+        
+        if (mysqli_num_rows($result) > 0){
+            $row = mysqli_fetch_array($result);
+            $order_id = $row[0];
+            $subscription_id = $row[1];
+            $end_date = $row[2];
+            $active = $row[3];
+            
+            $end_date = date('M d, Y', (strtotime($end_date)));
 
-        $row = mysqli_fetch_array($result);
-        $order_id = $row[0];
-        $subscription_id = $row[1];
-        $end_date = $row[2];
-        $active = $row[3];
+            if ($subscription_id == 1){
+                $subscription_desc = "Standard - 1 Month Subscription";
+            }elseif ($subscription_id == 2){
+                $subscription_desc = "Standard - 6 Month Subscripton";
+            }elseif ($subscription_id == 3){
+                $subscription_desc = "Standard - 1 Year Subscription";
+            }elseif ($subscription_id == 4){
+                $subscription_desc = "Plus - 1 Month Subscription";
+            }elseif ($subscription_id == 5){
+                $subscription_desc = "Plus - 6 Month Subscripton";
+            }elseif ($subscription_id == 6){
+                $subscription_desc = "Plus - 1 Year Subscription";
+            }elseif ($subscription_id == 7){
+                $subscription_desc = "Premium - 1 Month Subscription";
+            }elseif ($subscription_id == 8){
+                $subscription_desc = "Premium - 6 Month Subscripton";
+            }elseif ($subscription_id == 9){
+                $subscription_desc = "Premium - 1 Year Subscription";
+            }
 
-        $end_date = date('M d, Y', (strtotime($end_date)));
+            $sql = "SELECT last_name, first_name, email, phone_num FROM users WHERE user_id = '$user_id';";
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_array($result);
 
-        if ($subscription_id == 1){
-            $subscription_desc = "Standard - 1 Month Subscription";
-        }elseif ($subscription_id == 2){
-            $subscription_desc = "Standard - 6 Month Subscripton";
-        }elseif ($subscription_id == 3){
-            $subscription_desc = "Standard - 1 Year Subscription";
-        }elseif ($subscription_id == 4){
-            $subscription_desc = "Plus - 1 Month Subscription";
-        }elseif ($subscription_id == 5){
-            $subscription_desc = "Plus - 6 Month Subscripton";
-        }elseif ($subscription_id == 6){
-            $subscription_desc = "Plus - 1 Year Subscription";
-        }elseif ($subscription_id == 7){
-            $subscription_desc = "Premium - 1 Month Subscription";
-        }elseif ($subscription_id == 8){
-            $subscription_desc = "Premium - 6 Month Subscripton";
-        }elseif ($subscription_id == 9){
-            $subscription_desc = "Premium - 1 Year Subscription";
+            $last_name = $row["last_name"];
+            $first_name = $row[1];
+            $email = $row[2];
+            $phone_num = $row[3];
+        }else {
+            $error = 1;
         }
-
-        $sql = "SELECT last_name, first_name, email, phone_num FROM users WHERE user_id = '$user_id';";
-        $result = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_array($result);
-
-        $last_name = $row[0];
-        $first_name = $row[1];
-        $email = $row[2];
-        $phone_num = $row[3];
-
     ?>
     <body>
         <?php
 
-            echo "<p>$first_name</p>";
-            echo "<p>$last_name</p>";
-            echo "<p>$email</p>";
-            echo "<p>$phone_num</p>";
+            if ($error == 0){
+                echo "<p>$first_name</p>";
+                echo "<p>$last_name</p>";
+                echo "<p>$email</p>";
+                echo "<p>$phone_num</p>";
+            }elseif ($error == 1){
+                echo "ERROR";
+            }
 
         ?>
 
