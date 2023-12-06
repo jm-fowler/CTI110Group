@@ -33,7 +33,7 @@
         $sql = "SELECT order_id, subscription_id, end_date, active FROM orders WHERE user_id = '$user_id' ORDER BY end_date DESC LIMIT 1;";
         $result = mysqli_query($conn, $sql);
         
-        if (mysqli_num_rows($result) > 0){
+ 
             $row = mysqli_fetch_array($result);
             $order_id = $row[0];
             $subscription_id = $row[1];
@@ -70,21 +70,19 @@
             $first_name = $row[1];
             $email = $row[2];
             $phone_num = $row[3];
-        }else {
-            $error = 1;
-        }
+
     ?>
     <body>
         <?php
 
-            if ($error == 0){
+
                 echo "<p>$first_name</p>";
                 echo "<p>$last_name</p>";
                 echo "<p>$email</p>";
                 echo "<p>$phone_num</p>";
-            }elseif ($error == 1){
-                echo "ERROR";
-            }
+           
+
+        
 
         ?>
 
