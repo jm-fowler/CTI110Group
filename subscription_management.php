@@ -36,7 +36,7 @@
         die("\nConnection failed: " . mysqli_connect_error());
     }
 
-    $sql = "UPDATE orders SET active = 'FALSE' WHERE end_date < CURDATE() AND user_id = '$user_id;";
+    $sql = "UPDATE orders SET active = 'FALSE' WHERE end_date < CURDATE() AND user_id = '$user_id';";
     mysqli_query($conn, $sql);
 
     $sql = "SELECT order_id, subscription_id, end_date, active FROM orders WHERE user_id = '$user_id' ORDER BY end_date DESC LIMIT 1;";
