@@ -1,8 +1,9 @@
 <?php
     session_start();
-    if(!isset($_SESSION['logged_in'])) {
-        header('LOCATION:login.php');
-        die();
+    if($_SESSION['logged_in'] != true) {
+        # header('LOCATION:login.php');
+        # die();
+        echo "<br><p>This page is not logged in</p>"
     }
 ?>
 
