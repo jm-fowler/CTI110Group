@@ -1,6 +1,7 @@
 <?php
     session_start();
-    if($_SESSION['logged_in'] != true) {
+    $logged_in = $_SESSION['logged_in'];
+    if($logged_in != true) {
         # header('LOCATION:login.php');
         # die();
         echo "<br><p>This page is not logged in</p>";
