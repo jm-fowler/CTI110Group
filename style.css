@@ -2,6 +2,12 @@ body{
     background-color: lightblue;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+footer{
+    bottom: 3%;
+    position: fixed;
+}
+
 .content-wrapper{
     padding: 10px 30px;
     }

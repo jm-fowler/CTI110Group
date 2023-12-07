@@ -21,6 +21,7 @@
             <p>Are you sure you want to logout</p>
             <label for="logout">Yes</label>
             <input type="radio" name="logout" id="logout">
+            <br>
             <label for="stay">No</label>
             <input type="radio" name="stay" id="stay">
         </div>
@@ -36,7 +37,7 @@
     if($logout == true){
         $logged_in = false;
         session_destroy();
-        header("LOCATION: ./login.php");
+        header("LOCATION: ./login.html");
         die();
     }
     if($stay == true){
@@ -46,4 +47,3 @@
 ?>
 </body>
 </html>
-

@@ -19,9 +19,11 @@
         </div>
         <section>
             <button type="submit">Login</button>
-            <a href="user_creation.html">Create New User</a>
         </section>
     </form>
+    <br>
+    <p>Don't have a user account?
+    <a href="user_creation.html">Create a New User</a></p>
 <?php
     session_start();
     $errors = [];
