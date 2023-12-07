@@ -33,7 +33,38 @@ ul li{
     color: lightblue; 
 }
 .pick_sub{
-
+    vertical-align: top;
+    margin:auto;
+    width: 30%;
+    padding-top: auto;
+    padding-right: auto;
+    padding-bottom: auto;
+    padding-left: auto;
+    display: inline-block;
+}
+.sub_options{
+    width: 1500px;
+    margin: auto;
+    /*border: 1px solid green;*/
+    padding-top: auto;
+    padding-right: auto;
+    padding-bottom: auto;
+    padding-left: auto;
+}
+.pick_term{
+    margin: auto;
+    text-align: center;
+    width: 30%;
+    padding: 10px;
+    vertical-align: bottom;
+    display: inline-block;
+}
+.center{
+    text-align: center;
+}
+.right{
+    position: absolute;
+    right: 160px;
 }
 
 

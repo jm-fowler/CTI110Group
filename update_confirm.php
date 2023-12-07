@@ -105,7 +105,7 @@
         VALUES ('$user_id','$user_sub_id','$user_sub_start','$user_sub_end', 'TRUE');";
         mysqli_query($conn,$sql);
 
-        $sql = "SELECT order_id, subscription_id, end_date FROM orders WHERE user_id = '$user_id' ORDER BY end_date DESC LIMIT 1;";
+        $sql = "SELECT order_id, subscription_id, end_date FROM orders WHERE user_id = '$user_id' ORDER BY order_id DESC LIMIT 1;";
         $result = mysqli_query($conn, $sql);
         
         $row = $result->fetch_array(MYSQLI_NUM);
@@ -144,13 +144,13 @@
     <?php
 
         if ($error == 0){
-            echo "<h1 align=\"center\">Thank You! Your Profile has been Updated</h1><ul align=\"center\" style=\"list-style-type:none;\"><li>$subscription_desc</li><li>Ends on ... $end_date</li></ul>";
+            echo "<h1 align=\"center\"><b>Thank You! Your Profile has been Updated</b></h1><br><p class=\"center\"><b>$subscription_desc</b> | Ends On ---- $end_date </p>";
         }elseif ($error == 1){
-            echo "<h1 align=\"center\">Oops...</h1><<ul align=\"center\" style=\"list-style-type:none;\"><li class=\"error\" style=\"color:red\">Please Select A Corresponding Subscription Term</li></ul>";
-            echo "<br><br><div align=\"center\"><a href=\"subscription_management.php\">Try Again</a></div>";
+            echo "<h1 align=\"center\"><b>Oops...</b></h1><br><p> class=\"error\" style=\"color:red\">Please Select A Corresponding Subscription Term</p>";
+            echo "<br><br><div class=\"center\"><a href=\"subscription_management.php\">Try Again</a></div>";
         }else {
-            echo "<h1 align=\"center\">Oops...</h1>";
-            echo "<br><br><div align=\"center\"><a href=\"subscription_management.php\">Try Again</a></div>";
+            echo "<h1 align=\"center\"><b>Oops...</b></h1>";
+            echo "<br><br><div class=\"center\"><a href=\"subscription_management.php\">Try Again</a></div>";
         }
 
     ?>

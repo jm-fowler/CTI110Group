@@ -39,7 +39,7 @@
     $sql = "UPDATE orders SET active = 'FALSE' WHERE end_date < CURDATE() AND user_id = '$user_id';";
     mysqli_query($conn, $sql);
 
-    $sql = "SELECT order_id, subscription_id, end_date, active FROM orders WHERE user_id = '$user_id' ORDER BY end_date DESC LIMIT 1;";
+    $sql = "SELECT order_id, subscription_id, end_date, active FROM orders WHERE user_id = '$user_id' ORDER BY order_id DESC LIMIT 1;";
     $result = mysqli_query($conn, $sql);
     
     $row = mysqli_fetch_array($result);
@@ -71,18 +71,18 @@
     }
 
     if ($active == "TRUE"){
-        echo "<p><b>$subscription_desc</b> | Status : ACTIVE Until $end_date </p>";
+        echo "<p class=\"center\"><b>$subscription_desc</b> | Status : ACTIVE Until $end_date </p>";
     }elseif ($active == "FALSE"){
-        echo "<p><b>$subscription_desc</b> | Status : INACTIVE Since $end_date </p>";
+        echo "<p class=\"center\"><b>$subscription_desc</b> | Status : INACTIVE Since $end_date </p>";
     }
     
     ?>
     <br>
     <h1>Update Your Subscription :</h1>
-    <br>
+    <br><br>
     <form action="update_confirm.php" method="post">
-        <div class="pick_sub">
-            <div>
+        <div class="sub_options">
+            <div class="pick_sub">
                 <input type="radio" name="subscription" id="standard" value="standard" required>
                 <label for="standard">
                     <span>Standard Subscription :</span>
@@ -90,16 +90,10 @@
                         <li>Unlimited Streams From Main Catalogue</li>
                         <li>With Ads</li>
                     </ul>
-                    <label for="standard_term">Term :</label>
-                    <select name="standard_term" id="standard_term">
-                        <option value="0">-- None --</option>
-                        <option value="1">1 Month - $9.99 a Month</option>
-                        <option value="6">6 Months - $7.99 a Month</option>
-                        <option value="12">12 Months - $5.99 a Month</option>
-                    </select>
                 </label>
             </div>
-            <div>
+          
+            <div class="pick_sub">
                 <input type="radio" name="subscription" id="plus" value="plus">
                 <label for="plus">
                     <span>Plus Subscription :</span>
@@ -108,16 +102,10 @@
                         <li>Exclusive Access To Plus Catalogue</li>
                         <li>With Ads</li>  
                     </ul>
-                    <label for="plus_term">Term :</label>
-                    <select name="plus_term" id="plus_term">
-                        <option value="0">-- None --</option>
-                        <option value="1">1 Month - $12.99 a Month</option>
-                        <option value="6">6 Months - $10.99 a Month</option>
-                        <option value="12">12 Months - $8.99 a Month</option>
-                    </select>
                 </label>
             </div>
-            <div>
+            
+            <div class="pick_sub">
                 <input type="radio" name="subscription" id="premium" value="premium">
                 <label for="premium">
                     <span>Premium Subscription :</span>
@@ -127,20 +115,49 @@
                         <li>Watch Offline via Downloads</li>
                         <li>No Ads</li>  
                     </ul>
-                    <label for="premium_term">Term :</label>
-                    <select name="premium_term" id="premium_term">
-                        <option value="0">-- None --</option>
-                        <option value="1">1 Month - $15.99 a Month</option>
-                        <option value="6">6 Months - $13.99 a Month</option>
-                        <option value="12">12 Months - $11.99 a Month</option>
-                    </select>
                 </label>
+            </div>
+            <div class="term_options">
+                <div class="pick_term">
+                    <label for="standard_term" class="pick_term">Term :</label>
+                    <div>
+                        <select name="standard_term" id="standard_term">
+                            <option value="0">-- None --</option>
+                            <option value="1">1 Month - $9.99 a Month</option>
+                            <option value="6">6 Months - $7.99 a Month</option>
+                            <option value="12">12 Months - $5.99 a Month</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="pick_term">
+                    <label for="plus_term" class="pick_term">Term :</label>
+                    <div>
+                        <select name="plus_term" id="plus_term">
+                            <option value="0">-- None --</option>
+                            <option value="1">1 Month - $12.99 a Month</option>
+                            <option value="6">6 Months - $10.99 a Month</option>
+                            <option value="12">12 Months - $8.99 a Month</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="pick_term">
+                    <label for="premium_term" class="pick_term">Term :</label>
+                    <div>
+                        <select name="premium_term" id="premium_term">
+                            <option value="0">-- None --</option>
+                            <option value="1">1 Month - $15.99 a Month</option>
+                            <option value="6">6 Months - $13.99 a Month</option>
+                            <option value="12">12 Months - $11.99 a Month</option>
+                        </select>
+                    </div>
+                </div>
             </div>
         </div>
         <br>
         <br>
+        <br>
         <div>
-            <button type="submit"> Update </button>
+            <button class="right" type="submit"> Update </button>
         </div>
     </form>
 </body>
