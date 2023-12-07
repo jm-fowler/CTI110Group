@@ -3,7 +3,8 @@
     Date: 2023-12-05
     File: subscription_management.php
     Purpose: Update and Manage Subscription Options
-    Updated: 2023-12-06
+    Updated: 2023-12-07
+    Change: Added logout link
 --->
 <html>
 <head>
@@ -20,6 +21,8 @@
 <body>
     <nav>
         <a href="user_page.php">Back to Your Profile</a>
+        <br>
+        <a href="logout.php">Logout</a>
     </nav>
     <h1>Current Subscription :</h1>
     <br>
