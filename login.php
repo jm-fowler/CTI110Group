@@ -8,7 +8,7 @@
 <body>
 <main>
     <form action="login.php" method="post">
-        <h1><center>Login</center></h1>
+        <h1>Login</h1>
         <div>
             <label for="email">Email: </label>
             <input type="email" name="email" id="email">

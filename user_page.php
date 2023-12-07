@@ -12,6 +12,11 @@
         <title>User Page</title>
         <link rel="stylesheet" type="text/css" href="style.css" />
     </head>
+    <header>
+        <a href="logout.php">Logout</a>
+    </header>
+
+
 
     <?php
 
