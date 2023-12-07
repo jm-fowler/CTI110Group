@@ -12,9 +12,9 @@
         <title>User Page</title>
         <link rel="stylesheet" type="text/css" href="style.css" />
     </head>
-    <header>
+    <nav>
         <a href="logout.php">Logout</a>
-    </header>
+    </nav>
 
 
 
