@@ -28,15 +28,21 @@
     <center><h2>Where Old Film is Reborn</h2></center>
     <h3>Watch Next:</h3>
     <figure>
+      <hr>
+      <h3>First_flights_in_aviation_history.ogv<h3>
+      <p>A newsreel from 1945 that shows some of the early history of flight.</p>
       <video controls>
         <source src="First_flights_in_aviation_history.ogv" type="video/ogg">
-      <figcaption><p>A newsreel from 1945 that shows some of the early history of flight.</p></figcaption>
+      <br>
     </figure>
     <figure>
+      <hr>
+      <h3>Jumeaux_Davidson_1902c_Colour_Film.ogg<h3>
+      <p>One of the first color films</p>
       <video width="400" controls>
         <source src="Jumeaux_Davidson_1902c_Colour_Film.ogg" type="video/ogg">
-      <figcaption><p>One of the first color films</p></figcaption>
-    </figure>
+      <br>
+    </figure
   </body>
 </main>
 </body>
