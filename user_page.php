@@ -20,8 +20,6 @@
         </ul>
     </nav>
 
-
-
     <?php
 
         $user_id = $_SESSION["user_id"];
