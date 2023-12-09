@@ -13,7 +13,11 @@
         <link rel="stylesheet" type="text/css" href="style.css" />
     </head>
     <nav>
-        <a href="logout.php">Logout</a>
+        <ul>
+            <li><a href="home.php">Home</a>
+            <li><a href="logout.php">Logout</a>
+            <li><a href="about.html" target="_blank">About RetroStream</a>
+        </ul>
     </nav>
 
 

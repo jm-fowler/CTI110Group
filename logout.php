@@ -37,11 +37,11 @@
     if($logout == true){
         $logged_in = false;
         session_destroy();
-        header("LOCATION: ./login.html");
+        header("LOCATION: ./home.html");
         die();
     }
     if($stay == true){
-        header("LOCATION: ./user_page.php");
+        header("LOCATION: ./home.php");
         die();
     }
 ?>

@@ -55,7 +55,7 @@
                 echo "Login successful"; 
                 $_SESSION["logged_in"] = true;
                 $_SESSION["user_id"] = $row["user_id"];
-                header("Location: ./user_page.php");
+                header("Location: ./home.php");
                 exit();
             } else {
                 echo "Incorrect password";
