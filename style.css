@@ -1,27 +1,31 @@
 body{
     background-color: lightblue;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
 
+}
 footer{
     bottom: 3%;
     position: fixed;
-}
 
+}
 .content-wrapper{
     padding: 10px 30px;
-    }
+
+}
 p{
     text-align: justify;
 
 }
-h1{
-    text-align: center;
 
-}
 .highlight{
     font-weight: 700;
     color: forestgreen;
+
+}
+h1{
+    text-align: center;
+    font-weight: 400;
+    font-size: 200%;
 
 }
 h1, h2{
