@@ -20,9 +20,10 @@
 </head>
 <body>
     <nav>
-        <a href="user_page.php">Back to Your Profile</a>
-        <br>
-        <a href="logout.php">Logout</a>
+        <ul>
+            <li><a href="user_page.php">Back to Your Profile</a>
+            <li><a href="logout.php">Logout</a>
+        </ul>
     </nav>
     <h1>Current Subscription :</h1>
     <br>

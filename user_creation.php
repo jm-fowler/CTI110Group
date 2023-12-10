@@ -13,7 +13,6 @@
     </head>
     <body>
         <?php
-            
             $user_first_name = $_POST['first_name'];
             $user_last_name = $_POST['last_name'];
             $user_phone_num = $_POST['phone_num'];
@@ -125,15 +124,20 @@
             mysqli_close($conn);
 
         ?>
-        <nav>
-            <a href="login.html">Back to Login</a><br><br>
-        </nav>
+        <header>
+            <h1 align="left">Create a RetroStream Profile</h1>
+            <img align="left" src="Meopta_Admira_8F_5.crop.resize.jpg" alt="RetroStream Logo">
+            <nav>
+                <ul>
+                    <li><a href="login.html">Back to Login</a><br><br>
+                </ul>
+            </nav>
+        </header>
         <h1 align="center">Create a Profile</h1>
         <figure>
             <img src="user.jpg" width="300">
         </figure>
         <br>
-
         <?php
 
             if ($error != 0){
@@ -145,7 +149,6 @@
                     echo "<li><span class=\"error\" style=\"color:red\"> Please Select a Subscription Term</span><br></li></ul>";
                 }
             }
-
         ?>
         <br>
         <form action="user_creation.php" method="post">
