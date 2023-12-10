@@ -48,11 +48,9 @@ p{
     text-align: justify;
 
 }
-
 .highlight{
     font-weight: 700;
     color: forestgreen;
-
 }
 h1{
     text-align: center;
@@ -75,10 +73,9 @@ ul li{
     border: 1px solid #ddd;
     border-radius: 8px;
 }
-
 .user_info{
-    background-color: darkblue;
-    color: lightblue; 
+    background-color: whitesmoke;
+    color: black;
     margin-top: 20px; /*added*/
 }
 .pick_sub{

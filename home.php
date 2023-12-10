@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
-    <title>Login</title>
+    <title>Home</title>
 </head>
 <body>
 <main>
