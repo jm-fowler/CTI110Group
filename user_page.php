@@ -121,7 +121,6 @@
         <ul>
             <li><a href="home.php">Home</a></li>
             <li><a href="logout.php">Logout</a></li>
-            <li><a href="about.html" target="_blank">About RetroStream</a></li>
         </ul>
     </nav>
     <div class="container">

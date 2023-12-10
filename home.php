@@ -19,7 +19,6 @@
     <ul>
       <li><a href="user_page.php">User Page</a>
       <li><a href="logout.php">Logout</a>
-      <li><a href="about.html" target="_blank">About RetroStream</a>
     </ul>
   </nav>
   <body>
