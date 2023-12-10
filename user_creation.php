@@ -147,8 +147,9 @@
             }
         ?>
         <br>
+        <hr>
         <form action="user_creation.php" method="post">
-            <div class="user_info">
+            <div class="user_info" style="background-color:lightblue">
                 <h2>User Information:</h2>
                 <label for="first_name">First Name :</label><br>
                 <input type="text" id="first_name" name="first_name" placeholder="First Name" required pattern="^[a-zA-Z \-]+$">
@@ -174,6 +175,7 @@
                     </ul>
                 </div>
             </div>
+            <hr>
             <div>
                 <h2>Pick a Subscription:</h2>
                 <br>
