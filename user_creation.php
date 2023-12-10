@@ -124,15 +124,11 @@
             mysqli_close($conn);
 
         ?>
-        <header>
-            <h1 align="left">Create a RetroStream Profile</h1>
-            <img align="left" src="Meopta_Admira_8F_5.crop.resize.jpg" alt="RetroStream Logo">
-            <nav>
-                <ul>
-                    <li><a href="login.html">Back to Login</a><br><br>
-                </ul>
-            </nav>
-        </header>
+        <nav>
+            <ul>
+                <li><a href="login.html">Back to Login</a><br><br>
+            </ul>
+        </nav>
         <h1 align="center">Create a Profile</h1>
         <figure>
             <img src="user.jpg" width="300">
