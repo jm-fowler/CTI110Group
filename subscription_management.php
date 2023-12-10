@@ -79,6 +79,8 @@
         echo "<p class=\"center\"><b>$subscription_desc</b> | Status : INACTIVE Since $end_date </p>";
     }
     
+    mysqli_close($conn);
+
     ?>
     <br>
     <h1>Update Your Subscription :</h1>

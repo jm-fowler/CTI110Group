@@ -122,6 +122,8 @@
                 header("location: login.html");
             }
 
+            mysqli_close($conn);
+
         ?>
         <nav>
             <a href="login.html">Back to Login</a><br><br>

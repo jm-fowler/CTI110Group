@@ -23,7 +23,7 @@
     </ul>
   </nav>
   <body>
-    <center><img src="Meopta_Admira_8F_5.crop.resize.jpg"></center>
+    <center><img src="Meopta_Admira_8F_5.crop.resize.jpg" alt="RetroStream Logo"></center>
     <h1>Welcome to RetroStream</h1>
     <center><h2>Where Old Film is Reborn</h2></center>
     <h3>Watch Next:</h3>

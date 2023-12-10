@@ -42,6 +42,7 @@
     $first_name = $row[1];
     $email = $row[2];
     $phone_num = $row[3];
+    mysqli_close($conn);
 ?>
 <!DOCTYPE html>
 <html lang="en">

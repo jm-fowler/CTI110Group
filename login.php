@@ -55,6 +55,7 @@
                 echo "Login successful"; 
                 $_SESSION["logged_in"] = true;
                 $_SESSION["user_id"] = $row["user_id"];
+                mysqli_close($conn);
                 header("Location: ./home.php");
                 exit();
             } else {
