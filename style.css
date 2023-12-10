@@ -1,19 +1,16 @@
-/*body{
-    background-color: lightblue;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-}*/
 body {
     background-color: lightblue;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
+body p {
+    margin: 5px;
+}
 footer{
-    bottom: 3%;
+    bottom: 0%;
     position: fixed;
 }
-/*added***********************************/
 nav {
 background-color: #333;
     color: white;
@@ -39,7 +36,6 @@ nav a {
 nav a:hover {
     color: #ffcc00;
 }
-/*added ***********************************/
 .content-wrapper{
     padding: 10px 30px;
 
@@ -74,9 +70,7 @@ ul li{
     border-radius: 8px;
 }
 .user_info{
-    background-color: whitesmoke;
-    color: black;
-    margin-top: 20px; /*added*/
+    margin-top: 20px;
 }
 .pick_sub{
     vertical-align: top;
@@ -89,6 +83,7 @@ ul li{
     display: inline-block;
 }
 .subscription_info {
+    margin-top: 20px;
     background-color: #fff;
     padding: 10px;
     border: 1px solid #ddd;

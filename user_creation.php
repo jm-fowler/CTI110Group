@@ -148,7 +148,7 @@
         ?>
         <br>
         <hr>
-        <form action="user_creation.php" method="post">
+        <form action="user_creation.php" method="post" style="margin:5px">
             <div class="user_info" style="background-color:lightblue">
                 <h2>User Information:</h2>
                 <label for="first_name">First Name :</label><br>
