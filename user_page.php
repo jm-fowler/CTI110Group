@@ -126,7 +126,7 @@
     </nav>
     <div class="container">
         <h2>User Information</h2>
-        <div class="user-info">
+        <div class="user_info">
             <?php
                 echo "<p><strong>Name:</strong> $first_name $last_name</p>";
                 echo "<p><strong>Email:</strong> $email</p>";
@@ -134,7 +134,7 @@
                 echo "<p><strong>User ID:</strong> $user_id</p>";
             ?>
         </div>
-        <div class="subscription-info">
+        <div class="subscription_info">
             <?php
                 if ($active == "TRUE") {
                     echo "<p><strong>Subscription:</strong> {$subscription_desc[$subscription_id]}</p>";
@@ -147,8 +147,5 @@
         </div>
         <a href="subscription_management.php">Manage Subscriptions</a>
     </div>
-    <footer>
-        <p>This page was created by .... </p>
-    </footer>
 </body>
 </html>

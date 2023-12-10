@@ -88,13 +88,13 @@ ul li{
     padding-left: auto;
     display: inline-block;
 }
-.subscription-info {
+.subscription_info {
     background-color: #fff;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 8px;
 }
-.user-info p, .subscription-info p {
+.user_info p, .subscription_info p {
     margin: 5px 0;
 }
 .sub_options{
