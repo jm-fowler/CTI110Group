@@ -1,13 +1,45 @@
-body{
+/*body{
     background-color: lightblue;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
+}*/
+body {
+    background-color: lightblue;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 footer{
     bottom: 3%;
     position: fixed;
-
 }
+/*added***********************************/
+nav {
+background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+nav ul li {
+    display: inline;
+    margin-right: 15px;
+}
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+nav a:hover {
+    color: #ffcc00;
+}
+/*added ***********************************/
 .content-wrapper{
     padding: 10px 30px;
 
@@ -26,21 +58,28 @@ h1{
     text-align: center;
     font-weight: 400;
     font-size: 200%;
-
 }
 h1, h2{
     font-weight: 400;
-
 }
 ul li{
     list-style-type: square;
     margin-bottom: 10px;
     margin-left: 50px;
-
 }
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: lightblue;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
 .user_info{
     background-color: darkblue;
     color: lightblue; 
+    margin-top: 20px; /*added*/
 }
 .pick_sub{
     vertical-align: top;
@@ -51,6 +90,15 @@ ul li{
     padding-bottom: auto;
     padding-left: auto;
     display: inline-block;
+}
+.subscription-info {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+.user-info p, .subscription-info p {
+    margin: 5px 0;
 }
 .sub_options{
     width: 1500px;
@@ -76,5 +124,3 @@ ul li{
     position: absolute;
     right: 160px;
 }
-
-

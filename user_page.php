@@ -51,6 +51,7 @@
     <title>User Page</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <style>
+        /* moved to style.css
         body {
             background-color: lightblue;
             font-family: Arial, sans-serif;
@@ -112,7 +113,7 @@
 
         nav a:hover {
             color: #ffcc00;
-        }
+        }*/
     </style>
 </head>
 <body>

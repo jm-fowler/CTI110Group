@@ -59,11 +59,11 @@
                 header("Location: ./home.php");
                 exit();
             } else {
-                echo "Incorrect password";
+                echo "<br>Incorrect password";
             }
         }
     } else {
-        echo "Email not found";
+        echo "<br>Email not found";
         # $errors = "emailnotfound";
     }
     $stmt->close();
